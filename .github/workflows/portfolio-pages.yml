@@ -1,0 +1,45 @@
+name: Publish Foxs Journey
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/portfolio-pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download verified standalone portfolio
+        run: |
+          curl --fail --location --retry 3 --output portfolio.zip 'https://visual-design-archive-33.racing-rose-7690.chatgpt.site/interview-site.zip'
+          echo '976c5ba141a20354410701234ac4b55972fd651b5c1204529ae0eb952f1067bc  portfolio.zip' | sha256sum --check
+          mkdir _site
+          unzip -q portfolio.zip -d _site
+          test -f _site/index.html
+          touch _site/.nojekyll
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: prepare
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v4
