@@ -27,6 +27,12 @@ jobs:
           unzip -q portfolio.zip -d _site
           test -f _site/index.html
           touch _site/.nojekyll
+      - name: Save portable website for Netlify Drop
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fox-Netlify-Ready
+          path: _site/
+          retention-days: 30
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload website
