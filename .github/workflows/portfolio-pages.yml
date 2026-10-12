@@ -21,8 +21,8 @@ jobs:
     steps:
       - name: Download verified standalone portfolio
         run: |
-          curl --fail --location --retry 3 --output portfolio.zip 'https://visual-design-archive-33.racing-rose-7690.chatgpt.site/interview-site.zip?version=fox-photo-20261012'
-          echo 'f58ba8f5bb0c63a02ce1d76d61f27625d775e85ae0198beca97098167ce11c2c  portfolio.zip' | sha256sum --check
+          curl --fail --location --retry 3 --output portfolio.zip 'https://visual-design-archive-33.racing-rose-7690.chatgpt.site/interview-site.zip?version=fox-poster-20261012'
+          echo '64b03074aaf86217dd46c22d5b3e7a388ecb0cb3f16e5e7f5e8a42970f285087  portfolio.zip' | sha256sum --check
           mkdir _site
           unzip -q portfolio.zip -d _site
           test -f _site/index.html
@@ -32,6 +32,12 @@ jobs:
         with:
           name: Fox-Netlify-Ready
           path: _site/
+          retention-days: 30
+      - name: Save freelance poster files
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fox-Freelance-Poster
+          path: _site/assets/promo/
           retention-days: 30
       - name: Configure Pages
         uses: actions/configure-pages@v5
