@@ -28,6 +28,15 @@ jobs:
           test -f _site/index.html
           curl --fail --location --retry 3 --output _site/bounce-cards-review.html 'https://raw.githubusercontent.com/foxsx010/FOX/328f2ca802b4483e80bc7635755bf7f6bf534823/reviews/bounce-cards.html'
           curl --fail --location --retry 3 --output _site/fox-ring-motion.html 'https://raw.githubusercontent.com/foxsx010/FOX/b30997a2a19b46d0e0bdd7b3fa3cd1100a54f6e4/reviews/fox-ring-motion.html'
+          curl --fail --location --retry 3 --output _site/fox-logo-event.html 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/preview.html'
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/FOX-event-A.gif.b64' | base64 --decode > _site/FOX-event-A.gif
+          echo 'f980e612dd5d28d8e0c9fae8a3d50482239d61f6d146ddcc98a5e6a953d22ba4  _site/FOX-event-A.gif' | sha256sum --check
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/FOX-event-A.mp4.b64' | base64 --decode > _site/FOX-event-A.mp4
+          echo 'cc847bb509668cd10f663a0fed8b5b119b86546c12fda2b6b750af904272aa9f  _site/FOX-event-A.mp4' | sha256sum --check
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/FOX-event-B.gif.b64' | base64 --decode > _site/FOX-event-B.gif
+          echo '46b39a181f2c660b5291a9e5e3eec0cd465588b1ba6b92ba8083e336e4adb9f6  _site/FOX-event-B.gif' | sha256sum --check
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/FOX-event-B.mp4.b64' | base64 --decode > _site/FOX-event-B.mp4
+          echo '5c899645786eda57a0a2f31d3d4a09a61f45c0805ce823596473c7ea5498a9f0  _site/FOX-event-B.mp4' | sha256sum --check
           touch _site/.nojekyll
       - name: Save portable website for Netlify Drop
         uses: actions/upload-artifact@v4
