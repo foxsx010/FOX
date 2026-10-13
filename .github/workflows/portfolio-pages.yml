@@ -27,6 +27,7 @@ jobs:
           unzip -q portfolio.zip -d _site
           test -f _site/index.html
           curl --fail --location --retry 3 --output _site/bounce-cards-review.html 'https://raw.githubusercontent.com/foxsx010/FOX/328f2ca802b4483e80bc7635755bf7f6bf534823/reviews/bounce-cards.html'
+          curl --fail --location --retry 3 --output _site/fox-ring-motion.html 'https://raw.githubusercontent.com/foxsx010/FOX/b30997a2a19b46d0e0bdd7b3fa3cd1100a54f6e4/reviews/fox-ring-motion.html'
           touch _site/.nojekyll
       - name: Save portable website for Netlify Drop
         uses: actions/upload-artifact@v4
