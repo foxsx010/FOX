@@ -37,6 +37,7 @@ jobs:
           echo '46b39a181f2c660b5291a9e5e3eec0cd465588b1ba6b92ba8083e336e4adb9f6  _site/FOX-event-B.gif' | sha256sum --check
           curl --fail --location --retry 3 'https://raw.githubusercontent.com/foxsx010/FOX/e78e5dcfb9442741e6229af4dbea545078e93760/reviews/fox-event/FOX-event-B.mp4.b64' | base64 --decode > _site/FOX-event-B.mp4
           echo '5c899645786eda57a0a2f31d3d4a09a61f45c0805ce823596473c7ea5498a9f0  _site/FOX-event-B.mp4' | sha256sum --check
+          curl --fail --location --retry 3 --output _site/fox-liquid-logo.html 'https://raw.githubusercontent.com/foxsx010/FOX/edc055633340133722bb1cca7a966a40961a5d57/reviews/fox-liquid-logo.html'
           touch _site/.nojekyll
       - name: Save portable website for Netlify Drop
         uses: actions/upload-artifact@v4
