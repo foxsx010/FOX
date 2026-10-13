@@ -21,8 +21,8 @@ jobs:
     steps:
       - name: Download verified standalone portfolio
         run: |
-          curl --fail --location --retry 3 --output portfolio.zip 'https://visual-design-archive-33.racing-rose-7690.chatgpt.site/interview-site.zip?version=fox-scroll-enter-20261013'
-          echo 'c55f6ab0a8d2cc7c396a4a2ea94d2db525af6a92f20d87e8f568615dc7a6089d  portfolio.zip' | sha256sum --check
+          curl --fail --location --retry 3 --output portfolio.zip 'https://visual-design-archive-33.racing-rose-7690.chatgpt.site/interview-site.zip?version=fox-scroll-story-20261013'
+          echo '4b3b339e420a3cccac9c8cb4f24e06cbe6813ba3124595e0a03520b359fcfbea  portfolio.zip' | sha256sum --check
           mkdir _site
           unzip -q portfolio.zip -d _site
           test -f _site/index.html
