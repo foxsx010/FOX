@@ -1,4 +1,5 @@
 name: Publish Foxs Journey
+# Start a new Pages revision after a canceled file synchronization.
 
 on:
   push:
